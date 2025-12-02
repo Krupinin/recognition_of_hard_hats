@@ -1,0 +1,10 @@
+# Configuration file for YOLO training
+model: yolov8n.pt  # Choose from: yolov8n.pt, yolov8s.pt, yolov8m.pt, yolov8l.pt, yolov8x.pt
+half: true        # Enable mixed precision training (true/false)
+imgsz: 416        # Image size (320, 416, 640, etc.)
+epochs: 10        # Number of epochs
+lr0: 0.01         # Initial learning rate
+batch: -1         # Batch size (-1 for auto)
+workers: 4        # Number of data loading workers
+device: null      # Device: null (auto), 'cpu', '0' (GPU), 'mps' (Mac Apple Silicon)
+patience: 10      # Early stopping patience (0 to disable)
