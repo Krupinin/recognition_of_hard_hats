@@ -4,6 +4,7 @@ from pathlib import Path
 import xml.etree.ElementTree as ET
 from shutil import copyfile
 import os
+import random
 from tqdm import tqdm
 from sklearn.model_selection import train_test_split
 
@@ -76,14 +77,22 @@ if __name__ == "__main__":
     images_path = 'archive/images'
 
     files = os.listdir(annotation_path)
+    files = sorted([f for f in files if f.endswith('.xml')])
+    random.seed(42)
+    files = random.sample(files, 1000)
+
     for file in tqdm(files, total=len(files)):
         file_xml = file.split(".")
         get_xml_data(annotation_path, file_xml[0])
 
     # Copy images
-    for file in os.listdir(images_path):
-        if file.endswith('.png'):
-            copyfile(f'{images_path}/{file}', f'Dataset/images/{file}')
+    image_list = [f.replace('.xml', '.png') for f in files]
+    for file in image_list:
+        copyfile(f'{images_path}/{file}', f'Dataset/images/{file}')
+
+    # Split
+    train_list, test_list = train_test_split(image_list, test_size=0.2, random_state=42)
+    val_list, test_list = train_test_split(test_list, test_size=0.5, random_state=42)
 
     # Split
     image_list = [f.replace('.xml', '.png') for f in files]
