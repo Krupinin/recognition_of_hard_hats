@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+form {
+    text-align: center;
+    margin: 30px 0;
+}
+
+input[type="file"] {
+    margin: 10px 0;
+    padding: 8px;
+    border: 2px dashed #3498db;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.results {
+    list-style-type: none;
+    padding: 0;
+}
+
+.results li {
+    background-color: #ecf0f1;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.violation {
+    background-color: #ffeaa7;
+    border-left: 5px solid #f39c12;
+}
+
+.safe {
+    background-color: #d5f4e6;
+    border-left: 5px solid #27ae60;
+}
+
+.warnings {
+    background-color: #ffeaa7;
+    border: 1px solid #f39c12;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.back-link {
+    display: inline-block;
+    background-color: #95a5a6;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.back-link:hover {
+    background-color: #7f8c8d;
+}
+
+.info {
+    text-align: center;
+    margin-top: 20px;
+    color: #7f8c8d;
+}

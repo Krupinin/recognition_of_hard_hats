@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Detection Results</h1>
+
+        {% if total_warnings %}
+            <div class="warnings">
+                <h2>Summary: Violations detected in {% for w in total_warnings %}{{ w.split(':')[0] }}{% if not loop.last %}; {% endif %}{% endfor %}</h2>
+            </div>
+        {% endif %}
+
+        <ul class="results">
+            {% for result in results %}
+                <li class="{{ 'violation' if 'violation' in result else 'safe' }}">
+                    {{ result }}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <a href="/" class="back-link">Upload more images</a>
+    </div>
+</body>
+</html>
