@@ -1,0 +1,57 @@
+# English translations for web_interface
+# Copyright (C) 2025
+# This file is distributed under the same license as the PACKAGE package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-08 16:00+0300\n"
+"PO-Revision-Date: 2025-01-08 16:00+0300\n"
+"Last-Translator: \n"
+"Language-Team: English <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/index.html:5
+msgid "Hard Hat Detection"
+msgstr "Hard Hat Detection"
+
+#: templates/index.html:8
+msgid "Hard Hat Violation Detection"
+msgstr "Hard Hat Violation Detection"
+
+#: templates/index.html:9
+msgid "Upload one or more images to check for persons without helmets."
+msgstr "Upload one or more images to check for persons without helmets."
+
+#: templates/index.html:13
+msgid "Check Images"
+msgstr "Check Images"
+
+#: templates/index.html:16
+msgid "Supported formats: PNG, JPG, JPEG, BMP"
+msgstr "Supported formats: PNG, JPG, JPEG, BMP"
+
+#: templates/index.html:17
+msgid "Multiple files can be selected for batch processing."
+msgstr "Multiple files can be selected for batch processing."
+
+#: templates/index.html:22
+msgid "Language:"
+msgstr "Language:"
+
+#: templates/results.html:5
+msgid "Detection Results"
+msgstr "Detection Results"
+
+#: templates/results.html:19
+msgid "Summary: Violations detected in"
+msgstr "Summary: Violations detected in"
+
+#: templates/results.html:35
+msgid "Upload more images"
+msgstr "Upload more images"

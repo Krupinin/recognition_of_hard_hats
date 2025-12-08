@@ -1,0 +1,57 @@
+# Translations template for web_interface
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-08 16:00+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/index.html:5
+msgid "Hard Hat Detection"
+msgstr ""
+
+#: templates/index.html:8
+msgid "Hard Hat Violation Detection"
+msgstr ""
+
+#: templates/index.html:9
+msgid "Upload one or more images to check for persons without helmets."
+msgstr ""
+
+#: templates/index.html:13
+msgid "Check Images"
+msgstr ""
+
+#: templates/index.html:16
+msgid "Supported formats: PNG, JPG, JPEG, BMP"
+msgstr ""
+
+#: templates/index.html:17
+msgid "Multiple files can be selected for batch processing."
+msgstr ""
+
+#: templates/index.html:22
+msgid "Language:"
+msgstr ""
+
+#: templates/results.html:5
+msgid "Detection Results"
+msgstr ""
+
+#: templates/results.html:19
+msgid "Summary: Violations detected in"
+msgstr ""
+
+#: templates/results.html:35
+msgid "Upload more images"
+msgstr ""

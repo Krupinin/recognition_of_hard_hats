@@ -16,6 +16,23 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.language-selector {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.language-selector form {
+    display: inline-block;
+    text-align: left;
+}
+
+.language-selector select {
+    margin-left: 5px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
 h1 {
     text-align: center;
     color: #2c3e50;

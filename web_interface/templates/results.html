@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ request.cookies.get('language', 'en') }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detection Results</title>
+    <title>{{ _("Detection Results") }}</title>
     <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Detection Results</h1>
+        <div class="language-selector">
+            <form action="/set_language" method="post">
+                <label for="language">{{ _("Language:") }}</label>
+                <select name="language" id="language" onchange="this.form.submit()">
+                    <option value="en" {% if request.cookies.get('language', 'en') == 'en' %}selected{% endif %}>English</option>
+                    <option value="ru" {% if request.cookies.get('language', 'en') == 'ru' %}selected{% endif %}>Русский</option>
+                </select>
+            </form>
+        </div>
+        <h1>{{ _("Detection Results") }}</h1>
 
         {% if total_warnings %}
             <div class="warnings">
-                <h2>Summary: Violations detected in {% for w in total_warnings %}{{ w.split(':')[0] }}{% if not loop.last %}; {% endif %}{% endfor %}</h2>
+                <h2>{{ _("Summary: Violations detected in") }} {% for w in total_warnings %}{{ w.split(':')[0] }}{% if not loop.last %}; {% endif %}{% endfor %}</h2>
             </div>
         {% endif %}
 
@@ -24,7 +33,7 @@
             {% endfor %}
         </ul>
 
-        <a href="/" class="back-link">Upload more images</a>
+        <a href="/" class="back-link">{{ _("Upload more images") }}</a>
     </div>
 </body>
 </html>

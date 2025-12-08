@@ -1,24 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ request.headers.get('accept-language', 'en').split(',')[0] }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hard Hat Detection</title>
+    <title>{{ _("Hard Hat Detection") }}</title>
     <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Hard Hat Violation Detection</h1>
-        <p>Upload one or more images to check for persons without helmets.</p>
+        <div class="language-selector">
+            <form action="/set_language" method="post">
+                <label for="language">{{ _("Language:") }}</label>
+                <select name="language" id="language" onchange="this.form.submit()">
+                    <option value="en" {% if request.cookies.get('language', 'en') == 'en' %}selected{% endif %}>English</option>
+                    <option value="ru" {% if request.cookies.get('language', 'en') == 'ru' %}selected{% endif %}>Русский</option>
+                </select>
+            </form>
+        </div>
+        <h1>{{ _("Hard Hat Violation Detection") }}</h1>
+        <p>{{ _("Upload one or more images to check for persons without helmets.") }}</p>
 
         <form action="/upload" method="post" enctype="multipart/form-data">
             <input type="file" name="files" multiple accept="image/*" required>
-            <button type="submit">Check Images</button>
+            <button type="submit">{{ _("Check Images") }}</button>
         </form>
 
         <div class="info">
-            <p>Supported formats: PNG, JPG, JPEG, BMP</p>
-            <p>Multiple files can be selected for batch processing.</p>
+            <p>{{ _("Supported formats: PNG, JPG, JPEG, BMP") }}</p>
+            <p>{{ _("Multiple files can be selected for batch processing.") }}</p>
         </div>
     </div>
 </body>
