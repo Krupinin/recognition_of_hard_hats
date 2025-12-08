@@ -27,9 +27,12 @@
         {% endif %}
 
         <ul class="results">
-            {% for result in results %}
-                <li class="{{ 'violation' if 'violation' in result else 'safe' }}">
-                    {{ result }}
+            {% for item in results %}
+                <li class="{{ 'violation' if 'violation' in item.text else 'safe' }}">
+                    {{ item.text }}
+                    {% if item.image_data %}
+                        <br><img src="data:{{ item.mime_type }};base64,{{ item.image_data }}" alt="Violating photo" style="max-width: 300px; margin: 10px 0;">
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>

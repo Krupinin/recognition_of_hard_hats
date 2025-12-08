@@ -55,3 +55,7 @@ msgstr "Summary: Violations detected in"
 #: templates/results.html:35
 msgid "Upload more images"
 msgstr "Upload more images"
+
+#: templates/results.html:24
+msgid "Violating Photos:"
+msgstr "Violating Photos:"

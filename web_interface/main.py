@@ -7,6 +7,8 @@ import tempfile
 import shutil
 from detect import check_image
 import gettext
+import time
+import base64
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -55,12 +57,25 @@ async def upload_files(request: Request, files: list[UploadFile] = File(...)):
 
         try:
             warnings = check_image(temp_path)
+            image_data = None
+            mime_type = None
             if warnings:
                 total_warnings.extend(warnings)
+                # Encode violating image to base64
+                with open(temp_path, 'rb') as f:
+                    image_data = base64.b64encode(f.read()).decode('utf-8')
+                # Determine MIME type
+                ext = file.filename.split('.')[-1].lower()
+                if ext == 'png':
+                    mime_type = 'image/png'
+                elif ext in ['jpg', 'jpeg']:
+                    mime_type = 'image/jpeg'
+                elif ext == 'bmp':
+                    mime_type = 'image/bmp'
                 result = f"{file.filename}: {len(warnings)} violation(s) detected - {'; '.join(warnings)}"
             else:
                 result = f"{file.filename}: No violations detected"
-            results.append(result)
+            results.append({"text": result, "image_data": image_data, "mime_type": mime_type})
         finally:
             os.unlink(temp_path)
 

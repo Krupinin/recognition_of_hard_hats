@@ -55,3 +55,7 @@ msgstr "Итог: Нарушения обнаружены в"
 #: templates/results.html:35
 msgid "Upload more images"
 msgstr "Загрузить больше изображений"
+
+#: templates/results.html:24
+msgid "Violating Photos:"
+msgstr "Нарушающие фото:"
