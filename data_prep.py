@@ -68,6 +68,9 @@ def get_xml_data(file_path, img_xml_file):
 
 if __name__ == "__main__":
     os.makedirs('Dataset/labels', exist_ok=True)
+    os.makedirs('Dataset/labels/train', exist_ok=True)
+    os.makedirs('Dataset/labels/val', exist_ok=True)
+    os.makedirs('Dataset/labels/test', exist_ok=True)
     os.makedirs('Dataset/images', exist_ok=True)
     os.makedirs('Dataset/images/train', exist_ok=True)
     os.makedirs('Dataset/images/val', exist_ok=True)
@@ -104,4 +107,4 @@ if __name__ == "__main__":
             if os.path.exists(f'Dataset/images/{f}'):
                 copyfile(f'Dataset/images/{f}', f'Dataset/images/{mode}/{f}')
             if os.path.exists(f'Dataset/labels/{f.replace(".png", ".txt")}'):
-                copyfile(f'Dataset/labels/{f.replace(".png", ".txt")}', f'Dataset/images/{mode}/{f.replace(".png", ".txt")}')
+                copyfile(f'Dataset/labels/{f.replace(".png", ".txt")}', f'Dataset/labels/{mode}/{f.replace(".png", ".txt")}')
