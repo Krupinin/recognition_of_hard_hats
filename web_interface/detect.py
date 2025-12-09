@@ -38,7 +38,7 @@ def calculate_iou(box1, box2):
     return intersection / union if union > 0 else 0.0
 
 def detect_person_without_helmet(results, iou_threshold=0.5):
-    warnings = []
+    warnings = set()
     for result in results:
         boxes = result.boxes
         if boxes is None:
@@ -58,25 +58,19 @@ def detect_person_without_helmet(results, iou_threshold=0.5):
         heads = [d for d in detections if d['class'] == 1]  # head
         persons = [d for d in detections if d['class'] == 2]  # person
 
-        for person in persons:
-            # Check if person has a helmet (IoU with any helmet > threshold)
-            has_helmet = any(calculate_iou(
-                [person['center_x'], person['center_y'], person['width'], person['height']],
-                [h['center_x'], h['center_y'], h['width'], h['height']]
-            ) > iou_threshold for h in helmets)
-            if not has_helmet:
-                warnings.append("WARNING: Person without helmet detected!")
+        if any(not any(calculate_iou(
+            [person['center_x'], person['center_y'], person['width'], person['height']],
+            [h['center_x'], h['center_y'], h['width'], h['height']]
+        ) > iou_threshold for h in helmets) for person in persons):
+            warnings.add("Person without helmet")
 
-        # Also check heads without helmets
-        for head in heads:
-            has_helmet = any(calculate_iou(
-                [head['center_x'], head['center_y'], head['width'], head['height']],
-                [h['center_x'], h['center_y'], h['width'], h['height']]
-            ) > iou_threshold for h in helmets)
-            if not has_helmet:
-                warnings.append("WARNING: Head without helmet detected!")
+        if any(not any(calculate_iou(
+            [head['center_x'], head['center_y'], head['width'], head['height']],
+            [h['center_x'], h['center_y'], h['width'], h['height']]
+        ) > iou_threshold for h in helmets) for head in heads):
+            warnings.add("Head without helmet")
 
-    return warnings
+    return list(warnings)
 
 def check_image(image_path, model_path='../runs/detect/train/weights/best.pt'):
     if not os.path.exists(model_path):

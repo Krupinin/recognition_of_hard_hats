@@ -45,7 +45,7 @@ async def home(request: Request):
 @app.post("/upload", response_class=HTMLResponse)
 async def upload_files(request: Request, files: list[UploadFile] = File(...)):
     results = []
-    total_warnings = []
+    total_warnings = set()
 
     for file in files:
         if not file.filename.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp')):
@@ -60,7 +60,7 @@ async def upload_files(request: Request, files: list[UploadFile] = File(...)):
             image_data = None
             mime_type = None
             if warnings:
-                total_warnings.extend(warnings)
+                total_warnings.update(warnings)
                 # Encode violating image to base64
                 with open(temp_path, 'rb') as f:
                     image_data = base64.b64encode(f.read()).decode('utf-8')
@@ -84,7 +84,7 @@ async def upload_files(request: Request, files: list[UploadFile] = File(...)):
     return templates.TemplateResponse("results.html", {
         "request": request,
         "results": results,
-        "total_warnings": total_warnings,
+        "total_warnings": list(total_warnings),
         "_": trans_func
     })
 

@@ -56,6 +56,14 @@ msgstr "Итог: Нарушения обнаружены в"
 msgid "Upload more images"
 msgstr "Загрузить больше изображений"
 
+#: detect.py:12
+msgid "Person without helmet"
+msgstr "Человек без каски"
+
+#: detect.py:13
+msgid "Head without helmet"
+msgstr "Голова без каски"
+
 #: templates/results.html:24
 msgid "Violating Photos:"
 msgstr "Нарушающие фото:"

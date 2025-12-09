@@ -22,7 +22,7 @@
 
         {% if total_warnings %}
             <div class="warnings">
-                <h2>{{ _("Summary: Violations detected in") }} {% for w in total_warnings %}{{ w.split(':')[0] }}{% if not loop.last %}; {% endif %}{% endfor %}</h2>
+                <h2>{{ _("Summary: Violations detected in") }} {% for w in total_warnings %}{{ _(w) }}{% if not loop.last %}; {% endif %}{% endfor %}</h2>
             </div>
         {% endif %}
 
