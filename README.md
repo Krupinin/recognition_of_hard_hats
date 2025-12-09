@@ -1,6 +1,6 @@
 # Hard Hat Detection Project
 
-This project implements a hard hat detection system using YOLOv8, based on the code from the Jupyter notebook.
+This project implements a hard hat detection system using YOLOv8. Using the web service, you can upload an array of photographs and receive a report on violations.
 
 ## Setup
 
@@ -34,13 +34,14 @@ This project implements a hard hat detection system using YOLOv8, based on the c
 
    The script will print warnings if persons without helmets are detected.
 
-## Files
+4. **Start web service**
+   ```bash
+   cd web_interface
+   pip install -r requirements-web.txt
+   uvicorn main:app --reload --host 0.0.0.0 --port 8000
+   ```
 
-- `data_prep.py`: Prepares dataset by converting annotations and splitting into train/val/test.
-- `train.py`: Trains the YOLOv8 model.
-- `detect.py`: Runs inference on an image and checks for persons without helmets.
-- `requirements.txt`: List of Python packages required.
+## Data source
 
-## Detection Logic
+[Link to kaggle](https://www.kaggle.com/datasets/andrewmvd/hard-hat-detection/data)
 
-The notification checks if detected 'person' or 'head' objects have overlapping 'helmet' detections (IoU > 0.5). If not, a warning is printed.
